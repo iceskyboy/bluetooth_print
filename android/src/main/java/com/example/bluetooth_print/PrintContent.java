@@ -132,6 +132,8 @@ public class PrintContent {
                   int x = (int)(m.get("x")==null?0:m.get("x")); //dpi: 1mm约为8个点
                   int y = (int)(m.get("y")==null?0:m.get("y"));
 
+                  int image_width = (int)(m.get("width")==null?300:m.get("width"));
+
                   if("text".equals(type)){
                         // 绘制简体中文
                         tsc.addText(x, y, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1, content);
@@ -146,7 +148,7 @@ public class PrintContent {
                   }else if("image".equals(type)){
                         byte[] bytes = Base64.decode(content, Base64.DEFAULT);
                         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                        tsc.addBitmap(x, y, LabelCommand.BITMAP_MODE.OVERWRITE, 300, bitmap);
+                        tsc.addBitmap(x, y, LabelCommand.BITMAP_MODE.OVERWRITE, image_width, bitmap);
                   }
             }
 
