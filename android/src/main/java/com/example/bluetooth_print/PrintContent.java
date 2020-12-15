@@ -125,6 +125,8 @@ public class PrintContent {
             // 清除打印缓冲区
             tsc.addCls();
 
+            tsc.addSpeed(LabelCommand.SPEED.SPEED1DIV5);
+
             // {type:'text|barcode|qrcode|image', content:'', x:0,y:0}
             for (Map<String,Object> m: list) {
                   String type = (String)m.get("type");
