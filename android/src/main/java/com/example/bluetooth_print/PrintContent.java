@@ -37,6 +37,8 @@ public class PrintContent {
                   int underline = (int)(m.get("underline")==null?0:m.get("underline"));
                   int linefeed = (int)(m.get("linefeed")==null?0:m.get("linefeed"));
 
+                  int image_width = (int)(m.get("width")==null?576:m.get("width"));
+
                   EscCommand.ENABLE emphasized = weight==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
                   EscCommand.ENABLE doublewidth = width==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
                   EscCommand.ENABLE doubleheight = height==0?EscCommand.ENABLE.OFF:EscCommand.ENABLE.ON;
@@ -72,7 +74,7 @@ public class PrintContent {
                   }else if("image".equals(type)){
                         byte[] bytes = Base64.decode(content, Base64.DEFAULT);
                         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                        esc.addRastBitImage(bitmap, 576, 0);
+                        esc.addRastBitImage(bitmap, image_width, 0);
                   }
 
                   if(linefeed == 1){
@@ -122,10 +124,10 @@ public class PrintContent {
             tsc.addDensity(LabelCommand.DENSITY.DNESITY4);
             // 撕纸模式开启
             tsc.addTear(EscCommand.ENABLE.ON);
+
+            tsc.addSpeed(LabelCommand.SPEED.SPEED4);
             // 清除打印缓冲区
             tsc.addCls();
-
-            tsc.addSpeed(LabelCommand.SPEED.SPEED1DIV5);
 
             // {type:'text|barcode|qrcode|image', content:'', x:0,y:0}
             for (Map<String,Object> m: list) {
@@ -156,6 +158,7 @@ public class PrintContent {
 
             // 打印标签
             tsc.addPrint(1, 1);
+
             // 打印标签后 蜂鸣器响
             tsc.addSound(2, 100);
             //开启钱箱

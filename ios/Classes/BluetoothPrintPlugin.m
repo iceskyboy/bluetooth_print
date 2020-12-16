@@ -199,6 +199,8 @@
         NSNumber *underline = ![m objectForKey:@"underline"]?@0 : [m objectForKey:@"underline"];
         NSNumber *linefeed = ![m objectForKey:@"linefeed"]?@0 : [m objectForKey:@"linefeed"];
         
+        NSNumber *image_width = ![m objectForKey:@"width"]?@576 : [m objectForKey:@"width"];
+        
         //内容居左（默认居左）
         [command addSetJustification:[align intValue]];
         
@@ -219,7 +221,7 @@
         }else if([@"image" isEqualToString:type]){
             NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:content options:0];
             UIImage *image = [UIImage imageWithData:decodeData];
-            [command addOriginrastBitImage:image width:576];
+            [command addOriginrastBitImage:image width:[image_width intValue]];
         }
         
         if([linefeed isEqualToNumber:@1]){
