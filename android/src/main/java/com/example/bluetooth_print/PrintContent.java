@@ -125,7 +125,6 @@ public class PrintContent {
             // 撕纸模式开启
             tsc.addTear(EscCommand.ENABLE.ON);
 
-            tsc.addSpeed(LabelCommand.SPEED.SPEED4);
             // 清除打印缓冲区
             tsc.addCls();
 
