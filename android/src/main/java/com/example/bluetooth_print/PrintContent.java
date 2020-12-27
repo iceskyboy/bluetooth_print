@@ -115,7 +115,8 @@ public class PrintContent {
             // 设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0 单位mm
             tsc.addGap(gap);
             // 设置打印方向
-            tsc.addDirection(LabelCommand.DIRECTION.FORWARD, LabelCommand.MIRROR.NORMAL);
+            //tsc.addDirection(LabelCommand.DIRECTION.FORWARD, LabelCommand.MIRROR.NORMAL);
+            tsc.addDirection(LabelCommand.DIRECTION.BACKWARD, LabelCommand.MIRROR.NORMAL);
             // 开启带Response的打印，用于连续打印
             tsc.addQueryPrinterStatus(LabelCommand.RESPONSE_MODE.ON);
             // 设置原点坐标
