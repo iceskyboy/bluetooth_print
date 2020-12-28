@@ -166,6 +166,12 @@ public class PrintContent {
             // 打印标签
             tsc.addPrint(1, 1);
 
+            tsc.addFeed(1);
+            tsc.addFeed(1);
+            tsc.addFeed(1);
+            tsc.addFeed(1);
+            tsc.addFeed(1);
+
             // 打印标签后 蜂鸣器响
             tsc.addSound(2, 100);
             //开启钱箱
