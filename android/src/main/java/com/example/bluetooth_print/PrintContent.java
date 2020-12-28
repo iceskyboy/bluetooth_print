@@ -157,8 +157,6 @@ public class PrintContent {
                   }
             }
 
-            tsc.addBackFeed(10);
-
             // 打印标签
             tsc.addPrint(1, 1);
 
