@@ -99,12 +99,6 @@ public class PrintContent {
             return esc.getCommand();
       }
 
-      public static Vector<Byte> feed() {
-            LabelCommand tsc = new LabelCommand();
-            tsc.addFeed(1);
-            return tsc.getCommand();
-      }
-
       /**
        * 标签打印对象转换
        * @return
@@ -165,12 +159,6 @@ public class PrintContent {
 
             // 打印标签
             tsc.addPrint(1, 1);
-
-            tsc.addFeed(1);
-            tsc.addFeed(1);
-            tsc.addFeed(1);
-            tsc.addFeed(1);
-            tsc.addFeed(1);
 
             // 打印标签后 蜂鸣器响
             tsc.addSound(2, 100);
