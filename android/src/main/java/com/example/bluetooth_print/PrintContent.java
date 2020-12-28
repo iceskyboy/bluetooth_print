@@ -99,6 +99,12 @@ public class PrintContent {
             return esc.getCommand();
       }
 
+      public static Vector<Byte> feed() {
+            LabelCommand tsc = new LabelCommand();
+            tsc.addFeed(1);
+            return tsc.getCommand();
+      }
+
       /**
        * 标签打印对象转换
        * @return
@@ -106,12 +112,7 @@ public class PrintContent {
       public static Vector<Byte> mapToLabel(Map<String,Object> config, List<Map<String,Object>> list) {
             LabelCommand tsc = new LabelCommand();
 
-
-            tsc.addFeed((int)config.get("feed"));
-            return tsc.getCommand();
-
-
-            /*int width = (int)(config.get("width")==null?60:config.get("width")); // 单位：mm
+            int width = (int)(config.get("width")==null?60:config.get("width")); // 单位：mm
             int height = (int)(config.get("height")==null?75:config.get("height")); // 单位：mm
             int gap = (int)(config.get("gap")==null?0:config.get("gap")); // 单位：mm
 
@@ -170,7 +171,7 @@ public class PrintContent {
             //开启钱箱
             tsc.addCashdrwer(LabelCommand.FOOT.F5, 255, 255);
             // 发送数据
-            return  tsc.getCommand();*/
+            return  tsc.getCommand();
       }
 
       /**

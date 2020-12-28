@@ -153,5 +153,11 @@ class BluetoothPrint {
     return Future.value(true);
   }
 
+  Future<dynamic> feed() {
+    Map<String, Object> args = Map();
+    _channel.invokeMethod('feed');
+    return Future.value(true);
+  }
+
   Future<dynamic> printTest() => _channel.invokeMethod('printTest');
 }

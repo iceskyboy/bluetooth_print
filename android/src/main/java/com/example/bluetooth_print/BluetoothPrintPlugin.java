@@ -338,6 +338,16 @@ public class BluetoothPrintPlugin implements MethodCallHandler, RequestPermissio
 
   }
 
+  private void feed(){
+    threadPool = ThreadPool.getInstantiation();
+    threadPool.addSerialTask(new Runnable() {
+      @Override
+      public void run() {
+          DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].sendDataImmediately(PrintContent.feed());
+      }
+    });
+  }
+
   @Override
   public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
