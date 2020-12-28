@@ -106,6 +106,11 @@ public class PrintContent {
       public static Vector<Byte> mapToLabel(Map<String,Object> config, List<Map<String,Object>> list) {
             LabelCommand tsc = new LabelCommand();
 
+            if (config.get("feed")==null){
+                  tsc.addFeed(1);
+                  return  tsc.getCommand();
+            }
+
             int width = (int)(config.get("width")==null?60:config.get("width")); // 单位：mm
             int height = (int)(config.get("height")==null?75:config.get("height")); // 单位：mm
             int gap = (int)(config.get("gap")==null?0:config.get("gap")); // 单位：mm
@@ -122,7 +127,8 @@ public class PrintContent {
             // 设置原点坐标
             tsc.addReference(0, 0);
             //设置浓度
-            tsc.addDensity(LabelCommand.DENSITY.DNESITY15);
+            tsc.addDensity(LabelCommand.DENSITY.DNESITY4);
+            tsc.addSpeed(LabelCommand.SPEED.SPEED1DIV5);
             // 撕纸模式开启
             tsc.addTear(EscCommand.ENABLE.ON);
 
