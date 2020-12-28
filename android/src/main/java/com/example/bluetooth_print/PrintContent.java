@@ -106,8 +106,8 @@ public class PrintContent {
       public static Vector<Byte> mapToLabel(Map<String,Object> config, List<Map<String,Object>> list) {
             LabelCommand tsc = new LabelCommand();
 
-            if (config.get("feed")==null){
-                  tsc.addFeed(1);
+            if (config.get("feed")!=null){
+                  tsc.addFeed((int)config.get("feed"));
                   return  tsc.getCommand();
             }
 
